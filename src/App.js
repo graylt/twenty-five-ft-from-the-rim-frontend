@@ -2,7 +2,11 @@ import {useState, useEffect} from 'react';
 import './App.css';
 import axios from 'axios'
 import ToggleDivImage from './components/ToggleImg';
-import NewProfile from './components/NewProfile';
+// import ProfileDashboard from './components/ProfileDashboard';
+// import Login from './components/Login';
+// import Register from './components/Register';
+import Profile from './components/Profile';
+import DraggableComponent from './components/DraggableComponent';
 
 
 
@@ -21,6 +25,7 @@ const [signedIn, setSignedIn] = useState(true)
 const [showSignIn, setShowSignIn] = useState(false)
 
 
+
 const [allPlayers, setAllPlayers] = useState([]) 
 // players from ball don't lie api
 
@@ -35,6 +40,22 @@ const [allPlayers, setAllPlayers] = useState([])
       setShowSignIn(false)
     }
   }
+
+
+  // const checkAuthenticated = async () => {
+  //   try {
+  //     const res = await fetch("https://twentyfiveftfromtherim.herokuapp.com/verify", {
+  //       method: "POST",
+  //       headers: { jwt_token: localStorage.token }
+  //     });
+
+  //     const parseRes = await res.json();
+
+  //     parseRes === true ? setIsAuthenticated(true) : setIsAuthenticated(false);
+  //   } catch (err) {
+  //     console.error(err.message);
+  //   }
+  // };
 
 //route to get profiles
 const getProfiles = () => {
@@ -77,20 +98,22 @@ const handleSignIn = (profileObj) => {
    axios.post(`https://twentyfiveftfromtherim.herokuapp.com/login`, profileObj)
        .then((response) => {
            console.log(response);
+           alert("Logged in Successfully");
            console.log(response.data);
            setLoggedIn(response.data)
        })
 }
 
 //handles profile log out request
-const handleSignOut = (profileObj) => {
-   axios.post(`https://twentyfiveftfromtherim.herokuapp.com/logout`, profileObj)
-       .then((response) => {
-           console.log(response);
-           console.log(response.data);
-           setLoggedIn(response.data)
-       })
-}
+// const handleSignOut = (profileObj) => {
+//    axios.post(`https://twentyfiveftfromtherim.herokuapp.com/logout`, profileObj)
+//        .then((response) => {
+//            console.log(response);
+//            alert("Logged out Successfully");
+//            console.log(response.data);
+//            setLoggedIn(response.data)
+//        })
+// }
 
 //create new user registration
 const handleRegistration = (newProfile) => {
@@ -101,6 +124,16 @@ const handleRegistration = (newProfile) => {
        setProfiles([...profiles, response.data])
    })
 }
+
+//create new user registration
+// const handleVerify = (profileObj) => {
+//    console.log(profileObj);
+//    axios.post('https://twentyfiveftfromtherim.herokuapp.com/verify', profileObj)
+//    .then((response) => {
+//        console.log(response);
+//        setProfiles([...profiles, response.data])
+//    })
+// }
 
 //update profile
 const handleUpdate = (editProfile) => {
@@ -132,7 +165,14 @@ const handleDelete = (deletedProfile) => {
     // getBooks()
     getAllPlayers()
     getProfiles()
+    // checkAuthenticated()
   }, [])
+
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // const setAuth = boolean => {
+  //   setIsAuthenticated(boolean);
+  // };
   
 
   return (
@@ -141,15 +181,24 @@ const handleDelete = (deletedProfile) => {
         <div>
         
     <ToggleDivImage/>
-    <NewProfile
+    <DraggableComponent/>
+    <Profile
       handleRegistration={handleRegistration}
       signInToggle={signInToggle}
       showSignIn={showSignIn}
       signedIn={signedIn}
       handleSignIn={handleSignIn}
+      // handleSignOut={handleSignOut}
       handleLogout={handleLogout}
       loggedIn={loggedIn}
+      handleDelete={handleDelete}
+      // setAuth={setAuth}
+      
       />
+    
+    
+
+   
 
    
          
