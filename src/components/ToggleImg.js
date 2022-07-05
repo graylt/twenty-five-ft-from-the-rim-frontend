@@ -17,7 +17,7 @@ const ToggleDivImage = () => {
         <button onClick={toggleImage}>Toggle court</button>
         
         {/* Render image if toggled is truthy */}
-        {toggled && <img src={image} />}
+        {toggled && <img src="" alt="bball" />}
       </div>
     );
   };
