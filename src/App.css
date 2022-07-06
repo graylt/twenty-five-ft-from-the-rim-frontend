@@ -37,6 +37,10 @@
   }
 } */
 
+.wrapper {
+  grid-template-columns: repeat(3, 1fr);
+}
+
 img {
   background-image: cover;
 }
@@ -65,7 +69,7 @@ img {
   background-color: white;
   height: 468px;
   padding: 8px;
-  overflow: auto;
+  /* overflow: auto; */
 }
 
 .modal-header, .modal-footer {
@@ -113,6 +117,90 @@ img {
   background-color: rgb(42, 42, 255);
   
 } */
+
+/*------------------------------------- Search Bar ---------------------------------------*/
+.search-bar-modal {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  background-color: white;
+  position: absolute;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* .searchbook {
+  width: 200px;
+  margin: 24px 24px;
+}
+.searchbook-img {
+  width: 200px;
+} */
+
+.search-bar-div {
+  text-align: center;
+  grid-column: 1 / span 6;
+  grid-row: 1;
+  margin: 108px;
+}
+
+.search-bar {
+  font-size: 24px;
+  font-weight: 400;
+  width: 50%;
+  border-radius: none;
+  color: black;
+  border: solid black 1px;
+  padding: 16px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+
+.search-flexbox {
+  grid-column: 1 / span 7;
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  margin: 32px;
+  margin-bottom: 32px;
+  gap: 24px;
+}
+
+.search-bar-x-btn-div {
+  text-align: right;
+  margin-top: 40px;
+  grid-column: 6;
+  grid-row: 1;
+}
+
+.search-bar-x-btn {
+  margin-right: 72px;
+  background: none;
+  border: none;
+  color: rgb(29, 66, 253);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.modal-wrapper {
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  /* From https://css.glass */
+  background-color: rgba(66, 66, 66, 0.74);
+  /* border-radius: 16px; */
+  /* box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); */
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  /* border: 1px solid rgba(0, 0, 0, 0.56); */
+  position: fixed;
+}
+/*----------------------------------------------------------------------------------------*/
 
 /*---------------------------------- Sign In Message --------------------------------------*/
 /* .sign-in-modal {

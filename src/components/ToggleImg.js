@@ -1,6 +1,7 @@
 import react from 'react';
 import {useState, useEffect} from 'react';
 import image from './../assets/3point.png';
+// import DraggableComponent from '../components/DraggableComponent';
 
 
 
@@ -24,6 +25,7 @@ const ToggleDivImage = () => {
         
         {/* Render image if toggled is truthy */}
         {toggled && <img src={image} alt="bball" />}
+        {/* <DraggableComponent/> */}
       </div>
     );
   };
