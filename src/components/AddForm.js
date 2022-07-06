@@ -29,12 +29,13 @@ const Add = (props) => {
     props.handleCreate(fragment)
     setFragment(emptyFragment)
   }
+  
 
   return(
     <>
         <div className="asset-button-container">
             <button 
-            className="asset-button" 
+            className="add-button" 
             onClick={() => setShow(true)}
             >
             Add

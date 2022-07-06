@@ -19,6 +19,12 @@ const Edit = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     props.handleUpdate(fragment)
+    window.location.reload(false)
+  }
+
+  const handleDeleteSubmit = (event) => {
+    event.preventDefault()
+    props.handleDelete(fragment)
   }
 
   return(
@@ -48,7 +54,7 @@ const Edit = (props) => {
                 <input 
                 type='text' 
                 name='date' 
-                defaultValue={fragment.date} 
+                value={fragment.date} 
                 onChange={handleChange}
                 />
                 <br/>
@@ -62,7 +68,7 @@ const Edit = (props) => {
                 <input 
                 type='text' 
                 name='movie' 
-                defaultValue={fragment.movie} 
+                value={fragment.movie} 
                 onChange={handleChange}
                 />
                 <br/>
@@ -75,7 +81,7 @@ const Edit = (props) => {
                 <input 
                 type='text' 
                 name='publisher' 
-                defaultValue={fragment.short} 
+                value={fragment.short} 
                 onChange={handleChange}/>
                 <br/>
                 <br/>
@@ -101,7 +107,7 @@ const Edit = (props) => {
                 <input 
                 type='text' 
                 name='book' 
-                defaultValue={fragment.book} 
+                value={fragment.book} 
                 onChange={handleChange}
                 />
                 <br/>
@@ -115,7 +121,7 @@ const Edit = (props) => {
                 <input 
                 type='text' 
                 name='play' 
-                defaultValue={fragment.play} 
+                value={fragment.play} 
                 onChange={handleChange}
                 />
                 <br/>
@@ -129,14 +135,20 @@ const Edit = (props) => {
                 <input 
                 type='text' 
                 name='short_story' 
-                defaultValue={fragment.short_story} 
+                value={fragment.short_story} 
                 onChange={handleChange}
                 />
                 <br/>
                 <br/>
-
                 <div className='add-submit-btn-div'>
                   <input type='submit'/>
+                  <br/>
+                <br/>
+                  <button
+                  className="btn-btn-danger"
+                  onClick={handleDeleteSubmit}>
+                  Delete
+                </button>
                 </div>
               </form>
               </Modal>

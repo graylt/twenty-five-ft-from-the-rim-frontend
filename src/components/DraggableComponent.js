@@ -1,8 +1,8 @@
 // import React, { useRef, useState, useEffect } from 'react'
 
 // const shootTheBall = {
-//   width: "200px",
-//   height: "200px",
+//   width: "400px",
+//   height: "400px",
 //   background: "#FF9900",
 //   color: "#FFFFFF",
 //   display: "flex",
@@ -42,7 +42,6 @@
 //       onMouseDown={ () => setPressed(true) }
 //       onMouseUp={ () => setPressed(false) }>
 //       <p>{ pressed ? "" : "Press to drag" }</p>
-//       {/* <p>Stephen Curry</p> */}
 //     </div>
 //   )
 // }

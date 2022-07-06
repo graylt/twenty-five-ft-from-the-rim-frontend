@@ -6,9 +6,10 @@ import axios from 'axios'
 // import Login from './components/Login';
 // import Register from './components/Register';
 // import Profile from './components/Profile';
-// import DraggableComponent from './components/DraggableComponent';
+import DraggableComponent from './components/DraggableComponent';
 import AddForm from './components/AddForm';
 import EditForm from './components/EditForm';
+import AllFragments from './components/AllFragments';
 // import SearchPlayer from './components/SearchPlayer';
 // import AllPlayers from './components/AllPlayers';
 
@@ -38,8 +39,6 @@ const [query, setQuery] = useState("")
   const searchToggle = () => {
     if (showSearch === false) {
       setShowSearch(true)
-      // setShowAddForm(false)
-      // setShowSignIn(false)
     } else {
       setShowSearch(false)
     }
@@ -238,56 +237,26 @@ const handleDelete = (deletedFragment) => {
     <div className="wrapper">
       <header className="App-header">
         <h1>FRAGMENTS</h1>
+        <h4>Movies, short-films, tv series, books, plays & short stories 2022</h4>
         <div>
         
     {/* <ToggleDivImage/> */}
     {/* <DraggableComponent/> */}
+
+    <div className="button-nav">
     <AddForm
     handleCreate={handleCreate}
     />
-    {/* <EditForm
-    handleUpdate={handleUpdate}
-    /> */}
-
-{/* DISPLAY FRAGMENTS */}
-    <div>
-      <div>
-          {fragments.map(fragment => (
-            <div key={fragment.id}>
-              <ul>
-                <li>{fragment.date}</li>
-                  <li>{fragment.movie}</li>
-                    <li>{fragment.short}</li>
-                      <li>{fragment.tv_series}</li>
-                        <li>{fragment.book}</li>
-                          <li>{fragment.play}</li>
-                            <li>{fragment.short_story}</li>
-                        </ul>
-                      <div>
-                <EditForm 
-                fragment={fragment}
-                handleUpdate={handleUpdate} />
-                  </div>
-                <div>
-                <button
-                  className="btn btn-danger"
-                  onClick={() => handleDelete(fragment)}
-                >
-                  Delete
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-  </div>
-       
-
+    <br/>
+ 
+    
 {/* SEARCH FRAGMENTS */}
 
             <button
       onClick={searchToggle}
       className="search-btn">
-         {/* &#x1F50D; */} Search
+         &#x1F50D;
+          {/* Search */}
         </button>
       {showSearch ?
         <>
@@ -306,19 +275,19 @@ const handleDelete = (deletedFragment) => {
                   {fragments.filter((fragment) => {
                     if (query === '') {
                       return fragment
-                    } else if (fragment.date.toLowerCase().includes(query.toLowerCase())) {
+                    } else if (fragment.date?.toLowerCase().includes(query.toLowerCase())) {
                       return fragment
-                    } else if (fragment.movie.toLowerCase().includes(query.toLowerCase())) {
+                    } else if (fragment.movie?.toLowerCase().includes(query.toLowerCase())) {
                       return fragment
-                    } else if (fragment.short.toLowerCase().includes(query.toLowerCase())) {
+                    } else if (fragment.short?.toLowerCase().includes(query.toLowerCase())) {
                       return fragment
-                    } else if (fragment.tv_series.toLowerCase().includes(query.toLowerCase())) {
+                    } else if (fragment.tv_series?.toLowerCase().includes(query.toLowerCase())) {
                       return fragment
-                    } else if (fragment.book.toLowerCase().includes(query.toLowerCase())) {
+                    } else if (fragment.book?.toLowerCase().includes(query.toLowerCase())) {
                       return fragment
-                    } else if (fragment.play.toLowerCase().includes(query.toLowerCase())) {
+                    } else if (fragment.play?.toLowerCase().includes(query.toLowerCase())) {
                       return fragment
-                    } else if (fragment.short_story.toLowerCase().includes(query.toLowerCase())) {
+                    } else if (fragment.short_story?.toLowerCase().includes(query.toLowerCase())) {
                       return fragment
                     }
                   }).map((fragment) => {
@@ -339,6 +308,78 @@ const handleDelete = (deletedFragment) => {
           </div>
         </>
       : null}
+      </div>
+
+
+   {/* <EditForm
+    handleUpdate={handleUpdate}
+    /> */}
+
+{/* DISPLAY FRAGMENTS */}
+    {/* <div className="content-containter-x">
+      <div>
+          {fragments.map(fragment => (
+            <div key={fragment.id}>
+              <ul>
+                <li>{fragment.date}</li>
+                  <li>{fragment.movie}</li>
+                    <li>{fragment.short}</li>
+                      <li>{fragment.tv_series}</li>
+                        <li>{fragment.book}</li>
+                          <li>{fragment.play}</li>
+                            <li>{fragment.short_story}</li>
+                        </ul>
+                      <div>
+                <EditForm 
+                fragment={fragment}
+                handleUpdate={handleUpdate} />
+                  </div>
+                <div> */}
+                {/* <button
+                  className="btn btn-danger"
+                  onClick={() => handleDelete(fragment)}
+                >
+                  Delete
+                </button> */}
+              {/* </div>
+            </div>
+          ))}
+        </div>
+  </div> */}
+
+{fragments.map((fragment) => {
+            return (
+                <>
+                    <div className="card" key = {fragment.id}>
+                        <div className="read">
+                            <AllFragments getFragment={getFragment} fragment={fragment}/>
+                        </div>
+                        <br/>
+                        {/* <button
+                  className="btn btn-danger"
+                  onClick={() => handleDelete(fragment)}
+                >
+                  Delete
+                </button> */}
+                        {/* <EditForm 
+                fragment={fragment}
+                handleUpdate={handleUpdate} />
+                  </div>
+                <div> */}
+                        {/* <button className="btn" onClick={toggleUpdate}>
+                            Edit
+                        </button> */}
+                        {/* {showUpdate === true ?  */}
+                        <EditForm handleUpdate={handleUpdate} handleDelete={handleDelete} fragment={fragment}/>
+                        {/* : null} */}
+                    </div>
+                </>
+            )
+            })}
+
+        {/* </> */}
+
+
         </div>
       </header>
     </div>
